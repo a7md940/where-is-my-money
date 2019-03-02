@@ -1,0 +1,5 @@
+{
+    "hashSecretKey": "wimm_HashSecureKey",
+    "jwtSecureKey": "wimm_jwtSecureKey",
+    "db": "wimm"
+}
