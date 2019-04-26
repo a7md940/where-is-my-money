@@ -1,0 +1,9 @@
+#--add-package-form {
+    & > .row {
+        & > div {
+            mat-form-field {
+                width: 100%;
+            }
+        }
+    }
+}

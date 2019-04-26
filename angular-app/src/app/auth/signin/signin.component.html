@@ -1,0 +1,27 @@
+<div class="container rtl" id="--login-container">
+  <div class="row">
+      <div class="col-10 offset-1">
+          <form  
+          [formGroup]="loginForm" (ngSubmit)="signin()">
+              <div class="row">
+                  <div class="col-6">
+                      <label>اسم المستخدم</label>
+                      <input type="text" formControlName="username">
+                  </div>
+
+                  <div class="col-6">
+                    <label>الباسورد </label>
+                    <input type="password" formControlName="password">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-12">
+                      <div class="--form-buttons">
+                          <button type="submit" id="--login__btn">سجل الان</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

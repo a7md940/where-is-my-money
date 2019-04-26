@@ -20,7 +20,7 @@ router.post('/', async (req,res)=>{
             .send({error: 'sorry this pack is finished.'});
         pack['pack-large'] -= body['exchanges']['amount'];
 
-        // make toDo and save it..
+        // make exchange and save it..
         let exchange = await new Exchange(body);
         await exchange.save();
 

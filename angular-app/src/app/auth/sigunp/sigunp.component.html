@@ -1,0 +1,38 @@
+<div class="container rtl" id="--signup-container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <form  
+            [formGroup]="signup" (ngSubmit)="register()">
+                <div class="row">
+                    <div class="col-6">
+                        <label>اسم المستخدم</label>
+                        <input type="text" formControlName="name">
+                    </div>
+                    <div class="col-6">
+                        <label>الإيميل</label>
+                        <input type="text" formControlName="email">
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-6">
+                        <label>الباسورد </label>
+                        <input type="password" formControlName="password">
+                    </div>
+                    <div class="col-6">
+                        <label>تاكيد الباسورد </label>
+                        <input type="password" formControlName="confirmPassword">
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-12">
+                        <div class="--form-buttons">
+                            <button type="submit" id="--register-btn">سجل الان</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

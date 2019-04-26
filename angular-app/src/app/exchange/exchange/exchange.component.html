@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row ">
+    <div class="col-10 offset-1 rtl">
+        <form #f="ngForm" class="w-100" (ngSubmit)="exchange(f)">
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field>
+                        <input matInput 
+                        placeholder="الكمية" 
+                        type="number" 
+                        class="example-right-align"
+                        [(ngModel)]="amount"
+                        name="amount">
+                        <!-- <span matPrefix>e£</span> -->
+                        <span matSuffix>.00</span>
+                      </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field>
+                    <mat-select placeholder="نوع الصرف" 
+                    [(ngModel)]="exType"
+                    name="exType">
+                      <mat-option value="مواصلات">مواصلات</mat-option>
+                      <mat-option value="هدية">هدية</mat-option>
+                      <mat-option value="تسوق">تسوق</mat-option>
+                      <mat-option value="عطاء">عطاء</mat-option>
+                    </mat-select>
+                    <mat-hint align="end">اختر نوع الصرف</mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                    <mat-form-field>
+                        <textarea matInput placeholder="تفاصيل.."
+                        [(ngModel)]="desc"
+                        name="desc"></textarea>
+                      </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="--buttons-box">
+                    <button type="submit">اصرف</button>
+                  </div>
+                </div>
+              </div>
+        </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p>Total: {{ totalAmount }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-4" *ngFor='let exchange of exchanges'>
+          <div class="--exchange-item-details">
+              <p class='--ex-desc'>
+                  {{exchange.exchanges.desc}}
+              </p>
+              <p class="--ex-type"
+              [ngClass]="{ '--ex-type-transportation ': exchange.exchanges.exType == 'مواصلات'}">
+                {{exchange.exchanges.exType && exchange.exchanges.exType != 'option' ? exchange.exchanges.exType : 'No Category'}}
+              </p>
+              <span class="--ex-amount">{{exchange.exchanges.amount}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

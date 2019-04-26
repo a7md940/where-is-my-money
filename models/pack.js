@@ -3,9 +3,17 @@ const Schema = mongoose.Schema;
 const joi = require('joi');
 
 const packSchema = new mongoose.Schema({
+    'userId': {
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    },
     'pack-large': {
         required: true,
         type: Number,
+    },
+    'title': {
+        type: String,
+        required: true
     },
     'date': {
         type: Date,
@@ -28,7 +36,8 @@ function validatePack(bodyRequest){
         'pack-large': joi.number().required().min(3),
         date: joi.date(),
         exchanges: joi.object(),
-        startedAs: joi.number()
+        startedAs: joi.number(),
+        title: joi.string().required()
     }
     return joi.validate(bodyRequest, joiSchema);
 }

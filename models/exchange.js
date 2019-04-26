@@ -17,6 +17,10 @@ const exchangeSchema = new Schema({
                 type: String,
                 required: true
             },
+            'exType': {
+                type: String,
+                required: false
+            }
         },
         required: true,
     },
@@ -36,6 +40,7 @@ function validateExchange(bodyRequest){
             date: joi.date(),
             desc: joi.string().required(),
             amount: joi.number().required(),
+            exType: joi.string()
         })
     }
     return joi.validate(bodyRequest, joiSchema);
