@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PackageService } from './../services/package.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package-list',
@@ -10,7 +11,8 @@ import { Observable } from 'rxjs';
 export class PackageListComponent implements OnInit {
   packagesList: Observable<any>;
   constructor(
-    private packService: PackageService
+    private packService: PackageService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -19,6 +21,15 @@ export class PackageListComponent implements OnInit {
     //   this.packagesList = res;
     //   console.log('Packs are ::', res);
     // })
+    
+  }
+
+  navigateToCat(catId, packId) {
+    this.router.navigate([`/categories/${catId}`], {
+      queryParams: {
+        packId
+      }
+    });
   }
 
 }

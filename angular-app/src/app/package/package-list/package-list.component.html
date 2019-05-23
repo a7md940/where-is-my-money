@@ -11,13 +11,17 @@
           <p>Exchanges : <span class="--exchages">{{pack.exchanges.length}}</span> </p>
         </mat-card-content>
         <mat-chip-list>
-          <mat-chip color="primary" selected class="cursor" [routerLink]="['categories/1', pack._id]">مواصلات</mat-chip>
-          <mat-chip color="primary" selected class="cursor" [routerLink]="['categories/2', pack._id]">هدية</mat-chip>
-          <mat-chip color="primary" selected class="cursor" [routerLink]="['categories/3', pack._id]">تسوق</mat-chip>
-          <mat-chip color="primary" selected class="cursor" [routerLink]="['categories/4', pack._id]">عطاء</mat-chip>
+          <mat-chip color="primary" selected class="cursor" 
+          (click)="navigateToCat(1, pack._id)">مواصلات</mat-chip>
+          <mat-chip color="primary" selected class="cursor" 
+          (click)="navigateToCat(2, pack._id)">هدية</mat-chip>
+          <mat-chip color="primary" selected class="cursor" 
+          (click)="navigateToCat(3, pack._id)">تسوق</mat-chip>
+          <mat-chip color="primary" selected class="cursor" 
+          (click)="navigateToCat(4, pack._id)">عطاء</mat-chip>
         </mat-chip-list>
         <mat-card-actions>
-          <button mat-button [routerLink]="['/exchange', pack._id]">Exchange</button>
+          <button mat-button  [routerLink]="['/exchange', pack._id]">Exchange</button>
           <button mat-button [routerLink]="['/exchange/exchanges', pack._id]">Details</button>
         </mat-card-actions>
       </mat-card>

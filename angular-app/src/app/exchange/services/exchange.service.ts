@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { EventbusService } from 'src/app/store/eventbus/eventbus.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,12 @@ import { environment } from './../../../environments/environment';
 export class ExchangeService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private eventBus: EventbusService
   ) { }
-  exchangeFromPack(date) {
-    return this.http.post(environment.apiUrl + '/exchange', date);
+  exchangeFromPack(data) {
+    this.eventBus.emit({name: 'addExchange', value: data});
+    return this.http.post(environment.apiUrl + '/exchange', data);
   }
 
   getExchangesByPackId(exchangeId) {

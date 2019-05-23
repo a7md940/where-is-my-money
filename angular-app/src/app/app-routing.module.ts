@@ -12,8 +12,11 @@ const routes: Routes = [
     path: 'packages', loadChildren: './package/package.module#PackageModule'
   },
   {
+    path: 'categories', loadChildren: './categories/categories.module#CategoriesModule'
+  },
+  {
     path: 'exchange', loadChildren: './exchange/exchange.module#ExchangeModule'
-  }
+  },
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@ router.post('/', async (req,res)=>{
         pack['pack-large'] -= body['exchanges']['amount'];
 
         // make exchange and save it..
+        body.exType = body.exchanges.exType;
         let exchange = await new Exchange(body);
         await exchange.save();
 
@@ -62,5 +63,16 @@ router.get('/:packId', async(req, res)=>{
     if(!exchanges) return res.status(404).send({error: 'this pack did not exchange from yet.'});
 
     res.status(200).send({success: true, exchanges})
-})
+});
+
+router.get('/', async (req, res)=>{
+    const qParams = req.query;
+    if(!qParams.packId || !qParams.exType) return res.status(401).send('invalid query params.');
+
+    const packId = qParams.packId, exType = +qParams.exType;
+    // console.log({packId, exType})
+    const exchanges = await Exchange.find({packId, exType})
+    .select('-__v');
+    return res.status(200).send(exchanges);
+});
 module.exports = router;

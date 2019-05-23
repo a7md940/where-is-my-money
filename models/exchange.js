@@ -16,13 +16,14 @@ const exchangeSchema = new Schema({
             'desc': {
                 type: String,
                 required: true
-            },
-            'exType': {
-                type: String,
-                required: false
             }
         },
         required: true,
+    },
+    'exType': {
+        type: Number,
+        required: false,
+        default: 0
     },
     'packId': {
         type: Schema.Types.ObjectId,
@@ -40,8 +41,9 @@ function validateExchange(bodyRequest){
             date: joi.date(),
             desc: joi.string().required(),
             amount: joi.number().required(),
-            exType: joi.string()
-        })
+            exType: joi.number()
+        }),
+        exType: joi.number()
     }
     return joi.validate(bodyRequest, joiSchema);
 }

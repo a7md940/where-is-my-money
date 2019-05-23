@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PackageService } from 'src/app/package/services/package.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  packagesCount: number;
+  constructor(
+    private packService: PackageService
+  ) { }
 
   ngOnInit() {
+    this.packService.getUserPackages().subscribe((resp: any) => {
+      this.packagesCount = resp.packages.length;
+    });
   }
 
 }

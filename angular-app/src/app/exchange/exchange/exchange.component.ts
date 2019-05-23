@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PackageService } from './../../package/services/package.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExchangeService } from './../services/exchange.service';
@@ -21,7 +21,8 @@ export class ExchangeComponent implements OnInit {
     private route: ActivatedRoute,
     private packService: PackageService,
     private fb: FormBuilder,
-    private exchangeService: ExchangeService
+    private exchangeService: ExchangeService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -52,8 +53,10 @@ export class ExchangeComponent implements OnInit {
       "packId": this.packId
     }
     
-    this.exchangeService.exchangeFromPack(data).subscribe((res)=>{
+    this.exchangeService.exchangeFromPack(data).subscribe((res: any)=>{
       console.log('exchange done res from api is ::', res);
+      const packId = res.data.packId;
+      this.router.navigate(['/exchange/exchanges', packId]);
     })
   }
 }
