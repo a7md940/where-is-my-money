@@ -54,7 +54,7 @@ export class ExchangeComponent implements OnInit {
     }
     
     this.exchangeService.exchangeFromPack(data).subscribe((res: any)=>{
-      console.log('exchange done res from api is ::', res);
+      // console.log('exchange done res from api is ::', res);
       const packId = res.data.packId;
       this.router.navigate(['/exchange/exchanges', packId]);
     })

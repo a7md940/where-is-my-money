@@ -1,3 +1,4 @@
+import { AppEvents } from './../../store/eventbus/eventbus.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
@@ -13,7 +14,7 @@ export class ExchangeService {
     private eventBus: EventbusService
   ) { }
   exchangeFromPack(data) {
-    this.eventBus.emit({name: 'addExchange', value: data});
+    this.eventBus.emit(AppEvents.addExchange, data);
     return this.http.post(environment.apiUrl + '/exchange', data);
   }
 

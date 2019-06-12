@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventbusService } from './store/eventbus/eventbus.service';
+import { EventbusService, AppEvents } from './store/eventbus/eventbus.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,11 @@ export class AppComponent implements OnInit {
     private eventBus: EventbusService
   ) {}
 ngOnInit() {
-  this.eventBus.on('addExchange', (state)=>{
-    console.log({state});
+  this.eventBus.on(AppEvents.appState).subscribe((appState) => {
+    console.log({appState});
   });
+  this.eventBus.on(AppEvents.addExchange).subscribe((exchange) =>{
+    console.log({exchange}); 
+  })
 }
 }
